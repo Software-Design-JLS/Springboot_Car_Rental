@@ -1,6 +1,6 @@
 # Spring Boot Starter Project
 
-Initial project setup for Spring Boot Web-Application using Thymeleaf.
+Initial project setup for Spring Boot Web-Application using Thymeleaf...
 
 ## Recommended Development Environment
 
