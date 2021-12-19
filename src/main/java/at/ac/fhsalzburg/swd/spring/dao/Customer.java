@@ -15,48 +15,79 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
+    private String address;
+    private int age;
+    private String gender;
+	private String tel;
     private String eMail;
-    private String tel;
-    private Long credit;
+
 
     protected Customer() {}
 
-    public Customer(String firstName, String lastName, String eMail, String tel) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.eMail = eMail;
-        this.tel = tel;
-        this.setCredit((long) 0);
-        
-    }
+	public Customer(Long id, String firstName, String lastName, String address, int age, String gender, String tel, String eMail) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.age = age;
+		this.gender = gender;
+		this.tel = tel;
+		this.eMail = eMail;
+	}
+
+	public Customer(String firstName, String lastName, String eMail, String tel) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.tel = tel;
+		this.eMail = eMail;
+	}
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-	public String getLastName() {
-		return lastName;
-	}
-	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
+
+	public String getLastName() {
+		return lastName;
+	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	public void setEMail(String eMail)
-	{
-		this.eMail = eMail;
+
+	public String getAddress() {
+		return address;
 	}
-	
-	public String getEMail() {
-		return this.eMail;
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public String getTel() {
@@ -67,13 +98,13 @@ public class Customer {
 		this.tel = tel;
 	}
 
-	public Long getCredit() {
-		return credit;
+	public String geteMail() {
+		return eMail;
 	}
 
-	public void setCredit(Long credit) {
-		this.credit = credit;
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
 	}
-	
-	
+
+
 }

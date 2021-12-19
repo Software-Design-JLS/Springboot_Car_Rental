@@ -15,7 +15,6 @@ public interface CustomerServiceInterface {
 	public abstract Customer getById(Long id);
 	
 	public abstract void deleteById(Long id);
-	
-	public abstract boolean hasCredit(Customer customer);
+
 
 }

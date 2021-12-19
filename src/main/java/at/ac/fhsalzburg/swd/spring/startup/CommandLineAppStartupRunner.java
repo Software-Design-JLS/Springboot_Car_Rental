@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import at.ac.fhsalzburg.swd.spring.dao.Customer;
 import at.ac.fhsalzburg.swd.spring.dao.CustomerRepository;
 import at.ac.fhsalzburg.swd.spring.services.CustomerServiceInterface;
-import at.ac.fhsalzburg.swd.spring.services.OrderServiceInterface;
-import at.ac.fhsalzburg.swd.spring.services.ProductServiceInterface;
 
 @Profile("!test")
 @Component
@@ -20,11 +18,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
     @Autowired
     CustomerServiceInterface customerService;
     
-    @Autowired
-    ProductServiceInterface productService;
-    
-    @Autowired
-    OrderServiceInterface orderService;
+
     
     @Autowired
     CustomerRepository repo;
@@ -36,11 +30,10 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
     public void run(String...args) throws Exception {
     	
     	customerService.addCustomer("Max", "Mustermann", "max@muster.man", "123");
-    	productService.addProduct("first product", 3.30f);
+
     	Customer customer = customerService.getAll().iterator().next();
-    	customer.setCredit(100l);
     	customer = customerService.getById(1l);
-    	orderService.addOrder(new Date(),customer, productService.getAll());
+
     	
     }
 }

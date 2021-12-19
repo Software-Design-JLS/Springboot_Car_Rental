@@ -66,9 +66,4 @@ public class CustomerService implements CustomerServiceInterface {
 		repo.deleteById(id);
 	}
 
-	@Override
-	public boolean hasCredit(Customer customer) {
-		if (customer.getCredit()>0) return true;
-		else return false;
-	}
 }
