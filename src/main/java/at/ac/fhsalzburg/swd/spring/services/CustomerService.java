@@ -10,60 +10,65 @@ import at.ac.fhsalzburg.swd.spring.dao.CustomerRepository;
 
 @Service
 public class CustomerService implements CustomerServiceInterface {
-    
+
 	int i;
-	
+
 	@Autowired
-    private CustomerRepository repo;
-    
-    public CustomerService() {
-    	i=0;
-    }
-	
+	private CustomerRepository repo;
+
+	public CustomerService() {
+		i=0;
+	}
+
 	@Override
 	public String doSomething()	{
 		i++;
-    	return Integer.toString(i);
-    	
+		return Integer.toString(i);
+
 	}
-	
+
 	@Override
 	public boolean addCustomer(String firstName, String lastName, String eMail, String Tel) {
-		
-        if (firstName != null && firstName.length() > 0 //
-                && lastName != null && lastName.length() > 0) {
-            Customer newCustomer = new Customer(firstName, lastName, eMail, Tel);
-   
-            repo.save(newCustomer);
-            return true;
-        } 
-	        
-	    return false;
-	    
+
+		if (firstName != null && firstName.length() > 0 //
+				&& lastName != null && lastName.length() > 0) {
+			Customer newCustomer = new Customer(firstName, lastName, eMail, Tel);
+
+			repo.save(newCustomer);
+			return true;
+		}
+
+		return false;
+
 	}
-	
+
 	@Override
 	public boolean addCustomer(Customer customer) {
-		
-        repo.save(customer);
-            
-	    return false;
-	    
+
+		repo.save(customer);
+
+		return false;
+
 	}
-	
+
 	@Override
 	public Iterable<Customer> getAll() {
 		return repo.findAll();
 	}
-	
+
 	@Override
 	public Customer getById(Long id) {
 		return repo.findById(id).get();
 	}
-	
+
 	@Override
 	public void deleteById(Long id) {
 		repo.deleteById(id);
 	}
 
+	@Override
+	public boolean hasCredit(Customer customer) {
+		if (customer.getCredit()>0) return true;
+		else return false;
+	}
 }
