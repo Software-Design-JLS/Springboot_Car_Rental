@@ -29,10 +29,10 @@ public class CarService implements CarServiceInterface {
     }
 
     @Override
-    public boolean addCar(Long id, String model, String color, String licencePlate, int mileage, double consumption, boolean emobility, String fuel, String type, String status, String damage, String detail, Date availableDate, double price) {
+    public boolean addCar( Long id, String model, String type, String transmission, String mileage, int numberOfPassengers, String detail, double price) {
 
 
-        Car newCar = new Car(id, model, color, licencePlate, mileage, consumption, emobility, fuel, type, status, damage, detail, availableDate, price);
+        Car newCar = new Car(id, model, type, transmission, mileage, numberOfPassengers, detail, price);
         repo.save(newCar);
         return true;
     }

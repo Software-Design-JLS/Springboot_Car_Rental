@@ -28,7 +28,7 @@ public class ReservationService implements ReservationServiceInterface {
         List<Car> carlist = new ArrayList<Car>();
         cars.forEach(carlist::add);
 
-        if (customerService.hasCredit(customer)) {
+        /*if (customerService.hasCredit(customer)) {
             Reservation reservation = new Reservation(id, customer, reservationDate, departureDate, returnDate, pickupLocation, returnLocation, extras, price, payed, status, carlist);
             reservation=repo.save(reservation);
 
@@ -36,9 +36,10 @@ public class ReservationService implements ReservationServiceInterface {
         }
         else {
             return null;
-        }
-
+        }*/
+        return null;
     }
+
 
 
     @Override

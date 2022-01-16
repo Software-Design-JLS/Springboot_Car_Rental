@@ -2,46 +2,37 @@ package at.ac.fhsalzburg.swd.spring.dao;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
+@Entity
 public class Car {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String model;
-    private String color;
-    private String licencePlate;
-    private int mileage;
-    private double consumption;
-    private boolean emobility;
-    private String fuel;
     private String type;
-    private String status;
-    private String damage;
+    private String transmission;
+    private String mileage;
+    private int numberOfPassengers;
     private String detail;
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
-    private Date availableDate;
     private double price;
 
+    protected Car() {}
 
-    public Car(Long id, String model, String color, String licencePlate, int mileage, double consumption, boolean emobility, String fuel, String type, String status, String damage, String detail, Date availableDate, double price) {
+    public Car(Long id, String model, String type, String transmission, String mileage, int numberOfPassengers, String detail, double price) {
         this.id = id;
         this.model = model;
-        this.color = color;
-        this.licencePlate = licencePlate;
-        this.mileage = mileage;
-        this.consumption = consumption;
-        this.emobility = emobility;
-        this.fuel = fuel;
         this.type = type;
-        this.status = status;
-        this.damage = damage;
+        this.transmission = transmission;
+        this.mileage = mileage;
+        this.numberOfPassengers = numberOfPassengers;
         this.detail = detail;
-        this.availableDate = availableDate;
         this.price = price;
+        this.type = type;
     }
 
     public Long getId() {
@@ -60,52 +51,26 @@ public class Car {
         this.model = model;
     }
 
-    public String getColor() {
-        return color;
+    public String getTransmission() {
+        return transmission;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setTransmission(String transmission) {
+        this.transmission = transmission;
     }
 
-    public String getLicencePlate() {
-        return licencePlate;
+    public int getNumberOfPassengers() { return numberOfPassengers; }
+
+    public void setNumberOfPassengers(int numberOfPassengers) {
+        this.numberOfPassengers = numberOfPassengers;
     }
 
-    public void setLicencePlate(String licencePlate) {
-        this.licencePlate = licencePlate;
-    }
-
-    public int getMileage() {
+    public String getMileage() {
         return mileage;
     }
 
-    public void setMileage(int mileage) {
+    public void setMileage(String mileage) {
         this.mileage = mileage;
-    }
-
-    public double getConsumption() {
-        return consumption;
-    }
-
-    public void setConsumption(double consumption) {
-        this.consumption = consumption;
-    }
-
-    public boolean isEmobility() {
-        return emobility;
-    }
-
-    public void setEmobility(boolean emobility) {
-        this.emobility = emobility;
-    }
-
-    public String getFuel() {
-        return fuel;
-    }
-
-    public void setFuel(String fuel) {
-        this.fuel = fuel;
     }
 
     public String getType() {
@@ -116,36 +81,12 @@ public class Car {
         this.type = type;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getDamage() {
-        return damage;
-    }
-
-    public void setDamage(String damage) {
-        this.damage = damage;
-    }
-
     public String getDetail() {
         return detail;
     }
 
     public void setDetail(String detail) {
         this.detail = detail;
-    }
-
-    public Date getAvailableDate() {
-        return availableDate;
-    }
-
-    public void setAvailableDate(Date availableDate) {
-        this.availableDate = availableDate;
     }
 
     public double getPrice() {
