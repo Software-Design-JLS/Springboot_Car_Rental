@@ -2,6 +2,9 @@ package at.ac.fhsalzburg.swd.spring.startup;
 
 import java.util.Date;
 
+import at.ac.fhsalzburg.swd.spring.dao.Car;
+import at.ac.fhsalzburg.swd.spring.dao.CarRepository;
+import at.ac.fhsalzburg.swd.spring.services.CarServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -17,12 +20,16 @@ import at.ac.fhsalzburg.swd.spring.services.CustomerServiceInterface;
 public class CommandLineAppStartupRunner implements CommandLineRunner {
     @Autowired
     CustomerServiceInterface customerService;
-    
+
+    @Autowired
+    CarServiceInterface carService;
 
     
     @Autowired
     CustomerRepository repo;
 
+    @Autowired
+    CarRepository repoCar;
 
    // Initialize System with preset accounts and stocks
     @Override
@@ -34,6 +41,10 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
     	Customer customer = customerService.getAll().iterator().next();
     	customer = customerService.getById(1l);
 
-    	
+
+    	carService.addCar("Benz", "SUVs", "Automatic","Unlimited ", 5, "Volkswagen Golf or similar", 66 );
+
+        Car car = carService.getAll().iterator().next();
+        car = carService.getById(1l);
     }
 }

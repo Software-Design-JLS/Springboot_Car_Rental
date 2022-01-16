@@ -23,8 +23,7 @@ public class Car {
 
     protected Car() {}
 
-    public Car(Long id, String model, String type, String transmission, String mileage, int numberOfPassengers, String detail, double price) {
-        this.id = id;
+    public Car(String model, String type, String transmission, String mileage, int numberOfPassengers, String detail, double price) {
         this.model = model;
         this.type = type;
         this.transmission = transmission;
@@ -32,7 +31,6 @@ public class Car {
         this.numberOfPassengers = numberOfPassengers;
         this.detail = detail;
         this.price = price;
-        this.type = type;
     }
 
     public Long getId() {
