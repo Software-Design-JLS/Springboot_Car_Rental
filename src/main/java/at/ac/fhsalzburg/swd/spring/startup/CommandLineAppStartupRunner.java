@@ -28,8 +28,8 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
     @Override
     @Transactional // this method runs within one database transaction; performing a commit at the end
     public void run(String...args) throws Exception {
-    	
-    	customerService.addCustomer("Max", "Mustermann", "max@muster.man", "123");
+
+        customerService.addCustomer("Max", "Mustermann", "Puch Urstein", "23","male","+40723571234", "max@muster.man");
 
     	Customer customer = customerService.getAll().iterator().next();
     	customer = customerService.getById(1l);

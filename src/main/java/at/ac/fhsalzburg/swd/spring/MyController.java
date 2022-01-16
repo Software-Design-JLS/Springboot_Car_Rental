@@ -80,14 +80,15 @@ public class MyController {
 	@RequestMapping(value = { "/addCustomer" }, method = RequestMethod.POST)
     public String addCustomer(Model model, //
         @ModelAttribute("customerForm") CustomerForm customerForm) { // The @ModelAttribute is an annotation that binds a method parameter or method return value to a named model attribute and then exposes it to a web view: https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation
-        String firstName = customerForm.getFirstName();
-        String lastName = customerForm.getLastName();
-        String eMail = customerForm.getEMail();
-        String tel = customerForm.getTel();
-        
-        customerService.addCustomer(firstName, lastName, eMail,  tel);
-         
-        return "redirect:/";
+		String firstName = customerForm.getFirstName();
+		String lastName = customerForm.getLastName();
+		String eMail = customerForm.getEMail();
+		String tel = customerForm.getTel();
+		String age = customerForm.getAge();
+		String address = customerForm.getAddress();
+		String gender = customerForm.getGender();
+		customerService.addCustomer(firstName, lastName, address, age, gender, tel, eMail);
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = { "/addCustomer" }, method = RequestMethod.GET)

@@ -43,6 +43,20 @@ public class CustomerService implements CustomerServiceInterface {
 	}
 
 	@Override
+	public boolean addCustomer(String firstName, String lastName, String address, String age, String gender, String tel, String eMail) {
+
+		if (firstName != null && firstName.length() > 0 //
+				&& lastName != null && lastName.length() > 0) {
+			Customer newCustomer = new Customer(firstName, lastName, address, age, gender, tel, eMail);
+
+			repo.save(newCustomer);
+			return true;
+		}
+
+		return false;
+
+	}
+	@Override
 	public boolean addCustomer(Customer customer) {
 
 		repo.save(customer);
@@ -66,9 +80,9 @@ public class CustomerService implements CustomerServiceInterface {
 		repo.deleteById(id);
 	}
 
-	//@Override
-	/*public boolean hasCredit(Customer customer) {
+	@Override
+	public boolean hasCredit(Customer customer) {
 		if (customer.getCredit()>0) return true;
 		else return false;
-	}*/
+	}
 }

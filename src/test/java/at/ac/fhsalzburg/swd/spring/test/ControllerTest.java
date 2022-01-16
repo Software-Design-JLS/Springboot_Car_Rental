@@ -72,6 +72,9 @@ public class ControllerTest {
         form.setLastName("MusterMann");
         form.setEMail("max@musterm.ann");
         form.setTel("123");
+        form.setAge("21");
+        form.setGender("male");
+        form.setAddress("Puch Urstein");
         
         mvc.perform(MockMvcRequestBuilders.post	("/addCustomer",form)
         		.contentType(MediaType.TEXT_HTML))

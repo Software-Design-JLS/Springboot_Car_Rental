@@ -7,6 +7,7 @@ public interface CustomerServiceInterface {
 	public abstract String doSomething();
 
 	public abstract boolean addCustomer(String firstName, String lastName, String eMail, String Tel);
+	public abstract boolean addCustomer(String firstName, String lastName, String address, String age, String gender, String tel, String eMail);
 
 	public abstract boolean addCustomer(Customer costumer);
 
@@ -16,6 +17,6 @@ public interface CustomerServiceInterface {
 
 	public abstract void deleteById(Long id);
 
-	//public abstract boolean hasCredit(Customer customer);
+	public abstract boolean hasCredit(Customer customer);
 
 }

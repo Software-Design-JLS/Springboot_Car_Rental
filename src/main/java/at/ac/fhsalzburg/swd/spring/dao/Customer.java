@@ -10,22 +10,21 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Entity
 public class Customer {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String address;
-    private int age;
-    private String gender;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private String age;
+	private String gender;
 	private String tel;
-    private String eMail;
+	private String eMail;
+	private Long credit;
 
+	protected Customer() {}
 
-    protected Customer() {}
-
-	public Customer(Long id, String firstName, String lastName, String address, int age, String gender, String tel, String eMail) {
-		this.id = id;
+	public Customer(String firstName, String lastName, String address, String age, String gender, String tel, String eMail) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
@@ -74,11 +73,11 @@ public class Customer {
 		this.address = address;
 	}
 
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 
@@ -106,5 +105,11 @@ public class Customer {
 		this.eMail = eMail;
 	}
 
+	public Long getCredit() {
+		return credit;
+	}
 
+	public void setCredit(Long credit) {
+		this.credit = credit;
+	}
 }
