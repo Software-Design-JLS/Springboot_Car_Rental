@@ -70,7 +70,9 @@ public class MyController {
 		model.addAttribute("halloNachricht","welchem to SWD lab");
 
 		model.addAttribute("customers", customerService.getAll());
-		
+
+		model.addAttribute("cars", carService.getAll());
+
 		model.addAttribute("beanSingleton", singletonBean.getHashCode());
 		
 		TestBean prototypeBean = context.getBean("prototypeBean", TestBean.class);
@@ -157,6 +159,8 @@ public class MyController {
 	public String showAddCarPage(Model model) {
 		CarForm carForm = new CarForm();
 		model.addAttribute("carForm", carForm);
+
+		model.addAttribute("cars", carService.getAll());
 
 		model.addAttribute("message",carService.doSomething());
 

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CarRepository extends CrudRepository<Car, Long> {
@@ -14,5 +15,5 @@ public interface CarRepository extends CrudRepository<Car, Long> {
 
 
     @Transactional(timeout = 10)
-    Car findById(long id);
+    Optional<Car> findById(Long id);
 }
