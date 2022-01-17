@@ -6,6 +6,7 @@ import java.util.Date;
 
 public interface CarServiceInterface {
 
+
     public abstract boolean addCar(String model, String type, String transmission, String mileage, int numberOfPassengers, String detail, double price);
 
     public abstract boolean addCar(Car car);

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <title>Add Car</title>
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
@@ -25,44 +25,43 @@
 
 <main>
 
-    <h1>Spring Boot Web Thymeleaf Example Hello</h1>
-    <span th:text="${halloNachricht}"></span>
+    <h1>Spring Boot Web Thymeleaf Example Add</h1>
     <h2>
         <span th:text="'Service counter, ' + ${message}"></span>
         <br>
         <span th:text="'Session counter, ' + ${session.count.toString()}"></span>
 
     </h2>
-    <h2>
-        <span th:text="'Singleton Bean, ' + ${beanSingleton}"></span>
-        <br>
-        <span th:text="'Prototype Bean, ' + ${beanPrototype}"></span>
-        <br>
-        <span th:text="'Session Bean, ' + ${beanSession}"></span>
-    </h2>
 
-    <a href="addCustomer">Add Customer</a>
-    <br/><br/>
-    <table border="1">
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>eMail</th>
-            <th>Tel</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Address</th>
-        </tr>
-        <tr th:each ="customer : ${customers}">
-            <td th:utext="${customer.firstName}">...</td>
-            <td th:utext="${customer.lastName}">...</td>
-            <td th:utext="${customer.eMail}">...</td>
-            <td th:utext="${customer.tel}">...</td>
-            <td th:utext="${customer.age}">...</td>
-            <td th:utext="${customer.gender}">...</td>
-            <td th:utext="${customer.address}">...</td>
-        </tr>
-    </table>
+
+    <form th:action="@{/addCar}"
+          th:object="${carForm}" method="POST">
+        Model:
+        <input type="text" th:field="*{model}" />
+        <br/>
+        Type:
+        <input type="text" th:field="*{type}" />
+        <br/>
+        Transmission:
+        <input type="text" th:field="*{transmission}" />
+        <br/>
+        Mileage:
+        <input type="text" th:field="*{mileage}" />
+        <br/>
+        Detail:
+        <input type="text" th:field="*{detail}" />
+        <br/>
+        Number of Passengers:
+        <input type="text" th:field="*{numberOfPassengers}" />
+        <br/>
+        Price:
+        <input type="text" th:field="*{price}" />
+        <br/>
+        <input type="submit" value="Create" />
+    </form>
+
+
+
 
     <a href="addCar">Add Car</a>
     <br/><br/>

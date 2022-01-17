@@ -42,9 +42,9 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
     	customer = customerService.getById(1l);
 
 
-    	carService.addCar("Benz", "SUVs", "Automatic","Unlimited ", 5, "Volkswagen Golf or similar", 66 );
+    	/*carService.addCar("Benz", "SUVs", "Automatic","Unlimited ", 5, "Volkswagen Golf or similar", 66 );
 
         Car car = carService.getAll().iterator().next();
-        car = carService.getById(1l);
+        car = carService.getById(1l);*/
     }
 }

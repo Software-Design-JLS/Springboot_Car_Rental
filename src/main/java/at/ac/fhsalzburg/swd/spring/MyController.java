@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+
+import at.ac.fhsalzburg.swd.spring.dao.Car;
+import at.ac.fhsalzburg.swd.spring.services.CarServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -32,6 +35,9 @@ public class MyController {
 	
 	@Autowired 
 	CustomerServiceInterface customerService;
+
+	@Autowired
+	CarServiceInterface carService;
 	
 	    
     
@@ -133,7 +139,59 @@ public class MyController {
         return "redirect:/customers";
     }
 
-	
+	@RequestMapping(value = { "/addCar" }, method = RequestMethod.POST)
+	public String addCar(Model model, //
+							  @ModelAttribute("carForm") CarForm carForm) { // The @ModelAttribute is an annotation that binds a method parameter or method return value to a named model attribute and then exposes it to a web view: https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation
+		String modell = carForm.getModel();
+		String type = carForm.getType();
+		String transmission = carForm.getTransmission();
+		String mileage = carForm.getMileage();
+		String detail = carForm.getDetail();
+		int numberOfPassengers = carForm.getNumberOfPassengers();
+		double price = carForm.getPrice();
+		carService.addCar(modell, type, transmission, mileage, numberOfPassengers, detail, price);
+		return "redirect:/";
+	}
+
+	@RequestMapping(value = { "/addCar" }, method = RequestMethod.GET)
+	public String showAddCarPage(Model model) {
+		CarForm carForm = new CarForm();
+		model.addAttribute("carForm", carForm);
+
+		model.addAttribute("message",carService.doSomething());
+
+		return "addCar";
+	}
+
+	// Mappings for REST-Service
+
+	@GetMapping("/cars") // @GetMapping annotation maps HTTP GET requests onto specific handler methods. It is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
+	public @ResponseBody List<Car> allCars() {
+
+		return (List<Car>) carService.getAll();
+	}
+
+	@RequestMapping(value = { "/cars/{id}" }, method = RequestMethod.GET)
+	public @ResponseBody Car getCar(@PathVariable long id) {
+		Car car = carService.getById(id);
+
+		return car;
+	}
+
+	@RequestMapping(value = { "/cars/{id}" }, method = RequestMethod.PUT)
+	public String setCar(@RequestBody Car car) {
+
+		carService.addCar(car);
+
+		return "redirect:/cars";
+	}
+
+	@DeleteMapping("/cars/{id}") // @DeleteMapping annotation maps HTTP DELETE requests onto specific handler methods. It is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.DELETE).
+	public String deleteCar(@PathVariable String id) {
+		Long carid = Long.parseLong(id);
+		carService.deleteById(carid);
+		return "redirect:/cars";
+	}
 	
 }
 
