@@ -45,7 +45,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
     	Customer customer = customerService.getAll().iterator().next();
     	customer = customerService.getById(1l);
 
-
+//
     	carService.addCar("Benz", "SUVs", "Automatic","Unlimited ", 5, "available", 66 );
         carService.addCar("VW", "Passenger Vans", "Manual","Limited ", 4, "not available", 80 );
         carService.addCar("BMW", "Cars", "Manual","Unlimited ", 4, "available", 40 );
