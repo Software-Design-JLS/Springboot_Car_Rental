@@ -25,7 +25,7 @@
 
 <main>
 
-    <h1>Spring Boot Web Thymeleaf Example Add</h1>
+    <h1>Car Rental</h1>
     <h2>
         <span th:text="'Service counter, ' + ${message}"></span>
         <br>
@@ -56,17 +56,18 @@
         <br/>
         Price:
         <input type="text" th:field="*{price}" />
-        <br/>
+        <br/><br><br>
         <input type="submit" value="Create" />
     </form>
 
+    <br><br>
 
 
-
-    <a href="addCar">Add Car</a>
-    <br/><br/>
+    <a href="addCar">Clear all</a>
+    <br><br>
     <table border="1">
         <tr>
+            <th>ID</th>
             <th>Model</th>
             <th>Type</th>
             <th>Transmission</th>
@@ -74,8 +75,11 @@
             <th>Detail</th>
             <th>Number of Passengers</th>
             <th>Price</th>
+            <th>Rent</th>
+
         </tr>
-         <tr th:each ="car : ${cars}">
+        <tr th:each ="car : ${cars}">
+            <td th:utext="${car.id}">...</td>
             <td th:utext="${car.model}">...</td>
             <td th:utext="${car.type}">...</td>
             <td th:utext="${car.transmission}">...</td>
@@ -83,11 +87,13 @@
             <td th:utext="${car.detail}">...</td>
             <td th:utext="${car.numberOfPassengers}">...</td>
             <td th:utext="${car.price}">...</td>
+            <td><button>Rent</button></td>
 
 
 
         </tr>
     </table>
+
 
 </main>
 <!-- /.container -->

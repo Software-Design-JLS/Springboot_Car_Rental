@@ -25,7 +25,7 @@
 
 <main>
 
-    <h1>Spring Boot Web Thymeleaf Example Hello</h1>
+    <h1>Car Rental</h1>
     <span th:text="${halloNachricht}"></span>
     <h2>
         <span th:text="'Service counter, ' + ${message}"></span>
@@ -41,10 +41,11 @@
         <span th:text="'Session Bean, ' + ${beanSession}"></span>
     </h2>
 
-    <a href="addCustomer">Add Customer</a>
+    <a href="addCustomer">Register HERE!</a>
     <br/><br/>
     <table border="1">
         <tr>
+            <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>eMail</th>
@@ -52,8 +53,11 @@
             <th>Age</th>
             <th>Gender</th>
             <th>Address</th>
+            <th>Login</th>
+
         </tr>
         <tr th:each ="customer : ${customers}">
+            <td th:utext="${customer.id}">...</td>
             <td th:utext="${customer.firstName}">...</td>
             <td th:utext="${customer.lastName}">...</td>
             <td th:utext="${customer.eMail}">...</td>
@@ -61,13 +65,15 @@
             <td th:utext="${customer.age}">...</td>
             <td th:utext="${customer.gender}">...</td>
             <td th:utext="${customer.address}">...</td>
+            <td><a href="addCar">Login</a></td>
         </tr>
     </table>
-
+    <br/><br/>
     <a href="addCar">Add Car</a>
     <br/><br/>
     <table border="1">
         <tr>
+            <th>ID</th>
             <th>Model</th>
             <th>Type</th>
             <th>Transmission</th>
@@ -77,6 +83,7 @@
             <th>Price</th>
         </tr>
         <tr th:each ="car : ${cars}">
+            <td th:utext="${car.id}">...</td>
             <td th:utext="${car.model}">...</td>
             <td th:utext="${car.type}">...</td>
             <td th:utext="${car.transmission}">...</td>
