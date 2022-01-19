@@ -3,6 +3,7 @@ package at.ac.fhsalzburg.swd.spring.services;
 import at.ac.fhsalzburg.swd.spring.dao.Car;
 
 import java.util.Date;
+import java.util.List;
 
 public interface CarServiceInterface {
 
@@ -21,4 +22,5 @@ public interface CarServiceInterface {
 
     public abstract Car getById(Long id);
 
+    //List<Car> findAll();
 }

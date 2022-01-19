@@ -19,4 +19,5 @@ public interface CustomerServiceInterface {
 
 	public abstract boolean hasCredit(Customer customer);
 
+	//Object findAll();
 }

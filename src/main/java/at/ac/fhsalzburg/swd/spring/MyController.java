@@ -1,27 +1,31 @@
 package at.ac.fhsalzburg.swd.spring;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import at.ac.fhsalzburg.swd.spring.dao.Car;
+import at.ac.fhsalzburg.swd.spring.dao.Reservation;
+import at.ac.fhsalzburg.swd.spring.dao.ServiceStation;
 import at.ac.fhsalzburg.swd.spring.services.CarServiceInterface;
+import at.ac.fhsalzburg.swd.spring.services.ServiceStationService;
+import at.ac.fhsalzburg.swd.spring.services.ServiceStationServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import at.ac.fhsalzburg.swd.spring.dao.Customer;
 import at.ac.fhsalzburg.swd.spring.services.CustomerServiceInterface;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.expression.Lists;
 
 @Controller // marks the class as a web controller, capable of handling the HTTP requests. Spring will look at the methods of the class marked with the @Controller annotation and establish the routing table to know which methods serve which endpoints.
 public class MyController {
@@ -38,8 +42,9 @@ public class MyController {
 
 	@Autowired
 	CarServiceInterface carService;
-	
-	    
+
+	@Autowired
+	ServiceStationServiceInterface serviceStationService;
     
 	@Autowired 
 	TestBean singletonBean;
@@ -72,6 +77,8 @@ public class MyController {
 		model.addAttribute("customers", customerService.getAll());
 
 		model.addAttribute("cars", carService.getAll());
+
+		model.addAttribute("serviceStations", serviceStationService.getAll());
 
 		model.addAttribute("beanSingleton", singletonBean.getHashCode());
 		
@@ -118,7 +125,13 @@ public class MyController {
 
         return (List<Customer>) customerService.getAll();
     }
-    
+
+	@GetMapping("/serviceStations") // @GetMapping annotation maps HTTP GET requests onto specific handler methods. It is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
+	public @ResponseBody List<ServiceStation> allServiceStations() {
+
+		return (List<ServiceStation>) serviceStationService.getAll();
+	}
+
     @RequestMapping(value = { "/customers/{id}" }, method = RequestMethod.GET)
     public @ResponseBody Customer getCustomer(@PathVariable long id) {
     	Customer customer = customerService.getById(id);
@@ -196,6 +209,53 @@ public class MyController {
 		carService.deleteById(carid);
 		return "redirect:/cars";
 	}
-	
+
+
+	@GetMapping("/createRental")
+	public String showCreateRentalForm(Model model, @ModelAttribute("rental") Reservation rental) {
+		List<ServiceStation> stations;
+		//List<ServiceStation> stations = serviceStationService.findAll();
+		List<Car> cars;
+
+		rental.setReservationDate(LocalDate.now());
+		model.addAttribute("rental", rental);
+		model.addAttribute("cars", carService.getAll());
+		model.addAttribute("stations", serviceStationService.getAll());
+		model.addAttribute("customers", customerService.getAll());
+
+		return "fragments/create-rental";
+	}
+
+	@PostMapping("/createRental/refresh")
+	public String refreshCreateRentalForm(@ModelAttribute("rental") Reservation rental, RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("rental", rental);
+		return "redirect:/createRental";
+	}
+
+
+
+	@PostMapping("/create-rental/process")
+	public ModelAndView processCreateRentalForm(@Valid @ModelAttribute("rental") Reservation rental, BindingResult bindingResult) {
+		ModelAndView createRentalForm = new ModelAndView("fragments/createRental");
+		List<ServiceStation> stations;
+
+		//createRentalForm.addObject("cars", carService.findByStation(stations.get(0)));
+		createRentalForm.addObject("cars", carService.getAll());
+		createRentalForm.addObject("stations", serviceStationService.getAll());
+		createRentalForm.addObject("customers", customerService.getAll());
+
+		if (bindingResult.hasErrors()) {
+			return createRentalForm;
+		}
+
+		/*if (!serviceStationService.canCreate(rental)) {
+			return createRentalForm.addObject("carMismatchError", messages.get("carMismatchError"));
+		}
+
+		rentalService.create(rental);*/
+		return new ModelAndView("redirect:/employee/running-rentals")
+				.addObject("success");
+	}
+
 }
 
