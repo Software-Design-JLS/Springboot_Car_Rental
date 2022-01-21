@@ -100,19 +100,19 @@ public class Reservation {
 		this.returnDate = returnDate;
 	}
 
-	public ServiceStation getPickupLocation() {
+	public ServiceStation getRentalServiceStation() {
 		return rentalServiceStation;
 	}
 
-	public void setPickupLocation(ServiceStation rentalServiceStation) {
+	public void setRentalServiceStation(ServiceStation rentalServiceStation) {
 		this.rentalServiceStation = rentalServiceStation;
 	}
 
-	public ServiceStation getReturnLocation() {
+	public ServiceStation getReturnServiceStation() {
 		return returnServiceStation;
 	}
 
-	public void setReturnLocation(ServiceStation returnServiceStation) {
+	public void setReturnServiceStation(ServiceStation returnServiceStation) {
 		this.returnServiceStation = returnServiceStation;
 	}
 

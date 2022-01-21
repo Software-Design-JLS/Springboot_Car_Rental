@@ -107,12 +107,12 @@
             <th>Reservation Service Station</th>
         </tr>
         <tr th:each ="reservation : ${reservations}">
-            <td th:utext="${reservation.customer}">...</td>
-            <td th:utext="${reservation.car}">...</td>
-            <td th:utext="${reservation.reservationDate}">...</td>
-            <td th:utext="${reservation.returnDate}">...</td>
-            <!--    <td th:utext="${reservation.returnServiceStation}">...</td>
-               <td th:utext="${reservation.reservationServiceStation}">...</td>  -->
+            <td th:utext="${reservation.customer.getFirstName()}">...</td>
+            <td th:utext="${reservation.car.getModel()}">...</td>
+            <td th:utext="${reservation.reservationDate.toString()}">...</td>
+            <td th:utext="${reservation.returnDate.toString()}">...</td>
+            <td th:utext="${reservation.returnServiceStation.getLocation()}">...</td>
+               <td th:utext="${reservation.rentalServiceStation.getLocation()}">...</td>
            </tr>
        </table>
 
