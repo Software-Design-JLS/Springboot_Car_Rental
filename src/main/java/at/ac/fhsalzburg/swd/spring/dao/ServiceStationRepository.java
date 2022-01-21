@@ -12,5 +12,4 @@ public interface ServiceStationRepository extends CrudRepository<ServiceStation,
         ServiceStation findById(long id);
 
 
-
 }

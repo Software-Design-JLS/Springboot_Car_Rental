@@ -30,7 +30,13 @@ public class ReservationService implements ReservationServiceInterface {
 
 
         Reservation newReservation = new Reservation(customer, car, reservationDate, returnDate, rentalServiceStation, returnServiceStation);
+
+        Car updatedCar = new Car(car.getModel(), car.getType(),car.getTransmission(),car.getMileage(),car.getNumberOfPassengers(),car.getDetail(),car.getPrice(),car.getStatus());
+        updatedCar.setStatus("Not available");
+        updatedCar.setId(car.getId());
+
         repo.save(newReservation);
+        carRepo.save(updatedCar);
         return true;
     }
 
