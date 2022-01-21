@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import at.ac.fhsalzburg.swd.spring.dao.Car;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class CarService implements CarServiceInterface {
@@ -45,6 +46,7 @@ public class CarService implements CarServiceInterface {
         return false;
 
     }
+
 
     @Override
     public Iterable<Car> getAll() {

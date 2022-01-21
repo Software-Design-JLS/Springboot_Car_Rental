@@ -8,9 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import at.ac.fhsalzburg.swd.spring.dao.Car;
-import at.ac.fhsalzburg.swd.spring.dao.Reservation;
-import at.ac.fhsalzburg.swd.spring.dao.ServiceStation;
+import at.ac.fhsalzburg.swd.spring.dao.*;
 import at.ac.fhsalzburg.swd.spring.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -19,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import at.ac.fhsalzburg.swd.spring.dao.Customer;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.expression.Lists;
@@ -224,6 +221,8 @@ public class MyController {
 	@RequestMapping(value = {"/addReservation"}, method = RequestMethod.POST)
 	public String addReservation(Model model, //
 								 @ModelAttribute("reservationForm") ReservationForm reservationForm) { // The @ModelAttribute is an annotation that binds a method parameter or method return value to a named model attribute and then exposes it to a web view: https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation
+
+
 		Customer customer = reservationForm.getCustomer();
 		Car car = reservationForm.getCar();
 		LocalDate reservationDate = reservationForm.getReservationDate();
@@ -239,6 +238,13 @@ public class MyController {
 	@RequestMapping(value = {"/addReservation"}, method = RequestMethod.GET)
 	public String showAddReservationPage(Model model) {
 		ReservationForm reservationForm = new ReservationForm();
+
+		model.addAttribute("stationList", serviceStationService.getAll());
+
+		model.addAttribute("carList",carService.getAll());
+
+		model.addAttribute("customerList", customerService.getAll());
+
 		model.addAttribute("reservationForm", reservationForm);
 
 		model.addAttribute("reservations", reservationService.getAll());

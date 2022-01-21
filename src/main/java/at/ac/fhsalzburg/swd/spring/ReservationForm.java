@@ -2,9 +2,14 @@ package at.ac.fhsalzburg.swd.spring;
 
 import at.ac.fhsalzburg.swd.spring.dao.Car;
 import at.ac.fhsalzburg.swd.spring.dao.Customer;
+import at.ac.fhsalzburg.swd.spring.dao.CustomerRepository;
 import at.ac.fhsalzburg.swd.spring.dao.ServiceStation;
+import at.ac.fhsalzburg.swd.spring.services.CustomerService;
+import at.ac.fhsalzburg.swd.spring.services.CustomerServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ReservationForm {
 

@@ -2,6 +2,8 @@ package at.ac.fhsalzburg.swd.spring.services;
 
 import at.ac.fhsalzburg.swd.spring.dao.Customer;
 
+import java.util.List;
+
 public interface CustomerServiceInterface {
 
 	public abstract String doSomething();
@@ -11,6 +13,8 @@ public interface CustomerServiceInterface {
 
 	public abstract boolean addCustomer(Customer costumer);
 
+	//public abstract List<Customer> getCustomerList();
+
 	public abstract Iterable<Customer> getAll();
 
 	public abstract Customer getById(Long id);
@@ -19,5 +23,4 @@ public interface CustomerServiceInterface {
 
 	public abstract boolean hasCredit(Customer customer);
 
-	//Object findAll();
 }

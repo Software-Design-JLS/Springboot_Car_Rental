@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import at.ac.fhsalzburg.swd.spring.dao.Customer;
 import at.ac.fhsalzburg.swd.spring.dao.CustomerRepository;
 
+import java.util.List;
+
 
 @Service
 public class CustomerService implements CustomerServiceInterface {
@@ -60,10 +62,14 @@ public class CustomerService implements CustomerServiceInterface {
 	public boolean addCustomer(Customer customer) {
 
 		repo.save(customer);
-
 		return false;
-
 	}
+
+	/*
+	@Override
+	public List<Customer> getCustomerList() {
+		return (List<Customer>) repo.findAll();
+	}*/
 
 	@Override
 	public Iterable<Customer> getAll() {
