@@ -75,7 +75,7 @@
             <th>Detail</th>
             <th>Number of Passengers</th>
             <th>Price</th>
-            <th>Rent</th>
+
 
         </tr>
         <tr th:each ="car : ${cars}">
@@ -87,9 +87,6 @@
             <td th:utext="${car.detail}">...</td>
             <td th:utext="${car.numberOfPassengers}">...</td>
             <td th:utext="${car.price}">...</td>
-            <td><button><a>Rent</a></button></td>
-
-
         </tr>
     </table>
 

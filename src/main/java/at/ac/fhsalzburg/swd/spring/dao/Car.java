@@ -20,10 +20,11 @@ public class Car {
     private int numberOfPassengers;
     private String detail;
     private double price;
+    private String status;
 
     protected Car() {}
 
-    public Car(String model, String type, String transmission, String mileage, int numberOfPassengers, String detail, double price) {
+    public Car(String model, String type, String transmission, String mileage, int numberOfPassengers, String detail, double price,String status) {
         this.model = model;
         this.type = type;
         this.transmission = transmission;
@@ -31,6 +32,7 @@ public class Car {
         this.numberOfPassengers = numberOfPassengers;
         this.detail = detail;
         this.price = price;
+        this.status = status;
     }
 
     public Long getId() {
@@ -93,5 +95,13 @@ public class Car {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

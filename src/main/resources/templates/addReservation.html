@@ -62,29 +62,6 @@
 
     <a href="addReservation">Clear all</a>
     <br><br>
-    <table border="1">
-        <tr>
-            <th>Customer</th>
-            <th>Car</th>
-            <th>Reservation Date</th>
-            <th>Return Date</th>
-            <th>Return Service Station</th>
-            <th>Reservation Service Station</th>
-
-        </tr>
-        <tr th:each ="reservation : ${reservations}">
-            <td th:utext="${reservation.customer}">...</td>
-            <td th:utext="${reservation.car}">...</td>
-            <td th:utext="${reservation.reservationDate}">...</td>
-            <td th:utext="${reservation.returnDate}">...</td>
-            <!--  <td th:utext="${reservation.returnServiceStation}">...</td>
-             <td th:utext="${reservation.reservationServiceStation}">...</td> -->
-
-             <td><button><a>Reserve</a></button></td>
-
-
-         </tr>
-     </table>
 
 
  </main>

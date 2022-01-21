@@ -275,60 +275,6 @@ public class MyController {
 
 
 
-
-
-
-
-
-/*
-	//createRental
-
-	@GetMapping("/createRental")
-	public String showCreateRentalForm(Model model, @ModelAttribute("rental") Reservation rental) {
-		List<ServiceStation> stations;
-		//List<ServiceStation> stations = serviceStationService.findAll();
-		List<Car> cars;
-
-		rental.setReservationDate(LocalDate.now());
-		model.addAttribute("rental", rental);
-		model.addAttribute("cars", carService.getAll());
-		model.addAttribute("stations", serviceStationService.getAll());
-		model.addAttribute("customers", customerService.getAll());
-
-		return "fragments/createRental";
-	}
-
-	@PostMapping("/createRental/refresh")
-	public String refreshCreateRentalForm(@ModelAttribute("rental") Reservation rental, RedirectAttributes redirectAttributes) {
-		redirectAttributes.addFlashAttribute("rental", rental);
-		return "redirect:/createRental";
-	}
-
-
-
-	@PostMapping("/createRental/process")
-	public ModelAndView processCreateRentalForm(@Valid @ModelAttribute("rental") Reservation rental, BindingResult bindingResult) {
-		ModelAndView createRentalForm = new ModelAndView("fragments/createRental");
-		List<ServiceStation> stations;
-
-		//createRentalForm.addObject("cars", carService.findByStation(stations.get(0)));
-		createRentalForm.addObject("cars", carService.getAll());
-		createRentalForm.addObject("stations", serviceStationService.getAll());
-		createRentalForm.addObject("customers", customerService.getAll());
-
-		if (bindingResult.hasErrors()) {
-			return createRentalForm;
-		}
-
-		/*if (!serviceStationService.canCreate(rental)) {
-			return createRentalForm.addObject("carMismatchError", messages.get("carMismatchError"));
-		}
-
-		rentalService.create(rental);*/
-	//return new ModelAndView("redirect:/employee/running-rentals")
-	//		.addObject("success");
-
-
 }
 
 

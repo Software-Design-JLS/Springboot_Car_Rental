@@ -53,7 +53,6 @@
             <th>Age</th>
             <th>Gender</th>
             <th>Address</th>
-            <th>Login</th>
 
         </tr>
         <tr th:each ="customer : ${customers}">
@@ -65,7 +64,6 @@
             <td th:utext="${customer.age}">...</td>
             <td th:utext="${customer.gender}">...</td>
             <td th:utext="${customer.address}">...</td>
-            <td><a href="addCar">Login</a></td>
         </tr>
     </table>
     <br/><br/>
@@ -115,7 +113,7 @@
                <td th:utext="${reservation.rentalServiceStation.getLocation()}">...</td>
            </tr>
        </table>
-
+    <br><br/><br><br/>
    </main>
    <!-- /.container -->
 

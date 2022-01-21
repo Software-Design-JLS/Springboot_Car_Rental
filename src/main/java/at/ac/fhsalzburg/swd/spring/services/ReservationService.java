@@ -16,10 +16,10 @@ public class ReservationService implements ReservationServiceInterface {
     int i;
 
     @Autowired
-    private CustomerServiceInterface customerService;
+    private ReservationRepository repo;
 
     @Autowired
-    private ReservationRepository repo;
+    private CarRepository carRepo;
 
     public ReservationService() {
         i=0;
