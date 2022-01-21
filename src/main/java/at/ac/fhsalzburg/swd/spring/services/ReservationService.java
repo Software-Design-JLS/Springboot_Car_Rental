@@ -1,5 +1,6 @@
 package at.ac.fhsalzburg.swd.spring.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 public class ReservationService implements ReservationServiceInterface {
 
 
+    int i;
+
     @Autowired
     private CustomerServiceInterface customerService;
 
@@ -19,44 +22,50 @@ public class ReservationService implements ReservationServiceInterface {
     private ReservationRepository repo;
 
     public ReservationService() {
+        i=0;
+    }
+
+    @Override
+    public boolean addReservation(Customer customer, Car car, LocalDate reservationDate, LocalDate returnDate, ServiceStation rentalServiceStation, ServiceStation returnServiceStation) {
+
+
+        Reservation newReservation = new Reservation(customer, car, reservationDate, returnDate, rentalServiceStation, returnServiceStation);
+        repo.save(newReservation);
+        return true;
+    }
+
+    @Override
+    public boolean addReservation(Reservation reservation) {
+
+        repo.save(reservation);
+
+        return false;
+
+    }
+
+    @Override
+    public String doSomething()	{
+        i++;
+        return Integer.toString(i);
 
     }
 
 
-    @Override
-    public Reservation addReservation(Long id, Customer customer, Date reservationDate, Date departureDate, Date returnDate, String pickupLocation, String returnLocation, String extras, double price, boolean payed, boolean status,  Iterable<Car> cars) {
-        List<Car> carlist = new ArrayList<Car>();
-        cars.forEach(carlist::add);
-
-        /*if (customerService.hasCredit(customer)) {
-            Reservation reservation = new Reservation(id, customer, reservationDate, departureDate, returnDate, pickupLocation, returnLocation, extras, price, payed, status, carlist);
-            reservation=repo.save(reservation);
-
-            return reservation;
+        @Override
+        public Iterable<Reservation> getAll () {
+            return repo.findAll();
         }
-        else {
-            return null;
-        }*/
-        return null;
+
+        @Override
+        public Reservation getById (Long id){
+            return repo.findById(id).get();
+        }
+
+        @Override
+        public void deleteById (Long id){
+            repo.deleteById(id);
+        }
+
     }
-
-
-
-    @Override
-    public Iterable<Reservation> getAll() {
-        return repo.findAll();
-    }
-
-    @Override
-    public Reservation getById(Long id) {
-        return repo.findById(id).get();
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        repo.deleteById(id);
-    }
-}
-
 
 

@@ -34,28 +34,25 @@
     </h2>
 
 
-    <form th:action="@{/addCar}"
-          th:object="${carForm}" method="POST">
-        Model:
-        <input type="text" th:field="*{model}" />
+    <form th:action="@{/addReservation}"
+          th:object="${reservationForm}" method="POST">
+        Customer:
+        <input type="text" th:field="*{customer}" />
         <br/>
-        Type:
-        <input type="text" th:field="*{type}" />
+        Car:
+        <input type="text" th:field="*{car}" />
         <br/>
-        Transmission:
-        <input type="text" th:field="*{transmission}" />
+        Reservation Date:
+        <input type="text" th:field="*{reservationDate}" />
         <br/>
-        Mileage:
-        <input type="text" th:field="*{mileage}" />
+        Return Date:
+        <input type="text" th:field="*{returnDate}" />
         <br/>
-        Detail:
-        <input type="text" th:field="*{detail}" />
+        Return Service Station:
+        <input type="text" th:field="*{returnServiceStation}" />
         <br/>
-        Number of Passengers:
-        <input type="text" th:field="*{numberOfPassengers}" />
-        <br/>
-        Price:
-        <input type="text" th:field="*{price}" />
+        Reservation Service Station:
+        <input type="text" th:field="*{reservationServiceStation}" />
         <br/><br><br>
         <input type="submit" value="Create" />
     </form>
@@ -63,39 +60,35 @@
     <br><br>
 
 
-    <a href="addCar">Clear all</a>
+    <a href="addReservation">Clear all</a>
     <br><br>
     <table border="1">
         <tr>
-            <th>ID</th>
-            <th>Model</th>
-            <th>Type</th>
-            <th>Transmission</th>
-            <th>Mileage</th>
-            <th>Detail</th>
-            <th>Number of Passengers</th>
-            <th>Price</th>
-            <th>Rent</th>
+            <th>Customer</th>
+            <th>Car</th>
+            <th>Reservation Date</th>
+            <th>Return Date</th>
+            <th>Return Service Station</th>
+            <th>Reservation Service Station</th>
 
         </tr>
-        <tr th:each ="car : ${cars}">
-            <td th:utext="${car.id}">...</td>
-            <td th:utext="${car.model}">...</td>
-            <td th:utext="${car.type}">...</td>
-            <td th:utext="${car.transmission}">...</td>
-            <td th:utext="${car.mileage}">...</td>
-            <td th:utext="${car.detail}">...</td>
-            <td th:utext="${car.numberOfPassengers}">...</td>
-            <td th:utext="${car.price}">...</td>
-            <td><button><a>Rent</a></button></td>
+        <tr th:each ="reservation : ${reservations}">
+            <td th:utext="${reservation.customer}">...</td>
+            <td th:utext="${reservation.car}">...</td>
+            <td th:utext="${reservation.reservationDate}">...</td>
+            <td th:utext="${reservation.returnDate}">...</td>
+            <!--  <td th:utext="${reservation.returnServiceStation}">...</td>
+             <td th:utext="${reservation.reservationServiceStation}">...</td> -->
+
+             <td><button><a>Reserve</a></button></td>
 
 
-        </tr>
-    </table>
+         </tr>
+     </table>
 
 
-</main>
-<!-- /.containerui -->
+ </main>
+ <!-- /.containerui -->
 
 
 

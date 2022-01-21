@@ -30,10 +30,8 @@ public class Reservation {
 	@ManyToOne
 	private Customer customer;
 
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate reservationDate;
 
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate returnDate;
 
 	@ManyToOne
@@ -47,20 +45,19 @@ public class Reservation {
 	private boolean status;
 
 
-	public Reservation(Long id, Customer customer, LocalDate reservationDate, LocalDate returnDate, ServiceStation rentalServiceStation, ServiceStation returnServiceStation, String extras, double price, boolean payed, boolean status) {
-		this.id = id;
+	protected Reservation() {}
+
+	public Reservation(Customer customer, Car car, LocalDate reservationDate, LocalDate returnDate, ServiceStation rentalServiceStation, ServiceStation returnServiceStation) {
 		this.customer = customer;
+		this.car = car;
 		this.reservationDate = reservationDate;
 		this.returnDate = returnDate;
 		this.rentalServiceStation = rentalServiceStation;
 		this.returnServiceStation = returnServiceStation;
-		this.extras = extras;
+		/*this.extras = extras;
 		this.price = price;
 		this.payed = payed;
-		this.status = status;
-	}
-
-	protected Reservation() {
+		this.status = status;*/
 	}
 
 	public Long getId() {
@@ -77,6 +74,14 @@ public class Reservation {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+
+	public Car getCar(){
+		return car;
+	}
+
+	public void setCar(Car car) {
+		this.car = car;
 	}
 
 	public LocalDate getReservationDate() {

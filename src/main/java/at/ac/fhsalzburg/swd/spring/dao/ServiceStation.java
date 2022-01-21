@@ -14,8 +14,7 @@ public class ServiceStation {
     private String location;
 
 
-    public ServiceStation(Long id, String location) {
-        this.id = id;
+    public ServiceStation(String location) {
         this.location = location;
     }
 

@@ -5,13 +5,16 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 
 
 	@Transactional(timeout = 10)
-	Reservation findById(long id);
+	Optional<Reservation> findById(long id);
+
+
 	
 	
 }
