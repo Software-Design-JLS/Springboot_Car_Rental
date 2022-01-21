@@ -167,7 +167,8 @@ public class MyController {
 		String detail = carForm.getDetail();
 		int numberOfPassengers = carForm.getNumberOfPassengers();
 		double price = carForm.getPrice();
-		carService.addCar(modell, type, transmission, mileage, numberOfPassengers, detail, price);
+		String status = carForm.getStatus();
+		carService.addCar(modell, type, transmission, mileage, numberOfPassengers, detail, price,status);
 		return "redirect:/";
 	}
 

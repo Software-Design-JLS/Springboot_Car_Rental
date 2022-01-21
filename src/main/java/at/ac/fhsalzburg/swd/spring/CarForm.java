@@ -9,6 +9,7 @@ public class CarForm {
     private int numberOfPassengers;
     private String detail;
     private double price;
+    private String status;
 
     public String getModel() {
         return model;
@@ -19,6 +20,14 @@ public class CarForm {
     }
 
     public String getType() { return type; }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public void setType(String type) {
         this.type = type;

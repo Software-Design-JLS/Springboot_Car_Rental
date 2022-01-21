@@ -79,6 +79,7 @@
             <th>Detail</th>
             <th>Number of Passengers</th>
             <th>Price</th>
+            <th>Status</th>
         </tr>
         <tr th:each ="car : ${cars}">
             <td th:utext="${car.id}">...</td>
@@ -89,6 +90,7 @@
             <td th:utext="${car.detail}">...</td>
             <td th:utext="${car.numberOfPassengers}">...</td>
             <td th:utext="${car.price}">...</td>
+            <td th:utext="${car.status}">...</td>
         </tr>
     </table>
 
@@ -103,6 +105,7 @@
             <th>Return Date</th>
             <th>Return Service Station</th>
             <th>Reservation Service Station</th>
+
         </tr>
         <tr th:each ="reservation : ${reservations}">
             <td th:utext="${reservation.customer.getFirstName()}">...</td>
@@ -110,7 +113,7 @@
             <td th:utext="${reservation.reservationDate.toString()}">...</td>
             <td th:utext="${reservation.returnDate.toString()}">...</td>
             <td th:utext="${reservation.returnServiceStation.getLocation()}">...</td>
-               <td th:utext="${reservation.rentalServiceStation.getLocation()}">...</td>
+            <td th:utext="${reservation.rentalServiceStation.getLocation()}">...</td>
            </tr>
        </table>
     <br><br/><br><br/>
