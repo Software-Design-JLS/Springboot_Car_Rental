@@ -53,10 +53,10 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
         customer = customerService.getById(1l);
 
 
-        carService.addCar("Benz", "SUVs", "Automatic", "Unlimited ", 5, "available", 66,"Available");
-        carService.addCar("VW", "Passenger Vans", "Manual", "Limited ", 4, "not available", 80,"Not Available");
-        carService.addCar("BMW", "Cars", "Manual", "Unlimited ", 4, "available", 40,"Available");
-        carService.addCar("Polo", "Passenger Vans", "Automatic", "Limited ", 5, "not available", 100,"Available");
+        carService.addCar("Benz", "SUVs", "Automatic", "Unlimited ", 5, "Economy", 66,"Available");
+        carService.addCar("VW", "Passenger Vans", "Manual", "Limited ", 4, "Mini", 80,"Not Available");
+        carService.addCar("BMW", "Cars", "Manual", "Unlimited ", 4, "Compact", 40,"Available");
+        carService.addCar("Polo", "Passenger Vans", "Automatic", "Limited ", 5, "Intermediate", 100,"Available");
 
         Car car = carService.getAll().iterator().next();
         //car = carService.getById(2l);

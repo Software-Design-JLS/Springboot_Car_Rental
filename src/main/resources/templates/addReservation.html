@@ -34,75 +34,77 @@
     </h2>
 
 
-    <form th:action="@{/addReservation}"
-          th:object="${reservationForm}" method="POST">
-
-        <div th:switch="${#lists.size(customerList)}">
-        Customer:
-              <select class="form-control form-control-sm" id="customer" th:field="*{customer}">
-                 <option th:each="customer : ${customerList}"
-                         th:text="${customer.getLastName()}"
-                         th:value="${customer.id}">
-
-                 </option>
-             </select>
-             </div>
-             <br/>
-
-        <div th:switch="${#lists.size(carList)}">
-             Car:
-            <select class="form-control form-control-sm" id="car" th:field="*{car}">
-                <option th:each="car : ${carList}"
-                        th:text="${car.getModel()}"
-                        th:value="${car.id}">
-
-                </option>
-            </select>
-        </div>
-             <br/>
-             Reservation Date:
-             <input type="date" th:field="*{reservationDate}" />
-             <br/><br>
-             Return Date:
-             <input type="date" th:field="*{returnDate}" />
-             <br/><br>
-
-        <div th:switch="${#lists.size(stationList)}">
-            Return Service Station:
-            <select class="form-control form-control-sm" id="returnServiceStation" th:field="*{returnServiceStation}">
-                <option th:each="returnServiceStation : ${stationList}"
-                        th:text="${returnServiceStation.getLocation()}"
-                        th:value="${returnServiceStation.id}">
-
-                </option>
-            </select>
-        </div>
-             <br/>
-
-        <div th:switch="${#lists.size(stationList)}">
-            Return Service Station:
-            <select class="form-control form-control-sm" id="reservationServiceStation" th:field="*{reservationServiceStation}">
-                <option th:each="reservationServiceStation : ${stationList}"
-                        th:text="${reservationServiceStation.getLocation()}"
-                        th:value="${reservationServiceStation.id}">
-
-                </option>
-            </select>
-        </div>
-
-             <br/><br><br>
-             <input type="submit" value="Create" />
-         </form>
-
-         <br><br>
 
 
-         <a href="addReservation">Clear all</a>
-         <br><br>
+        <form th:action="@{/addReservation}"
+              th:object="${reservationForm}" method="POST">
+
+            <div th:switch="${#lists.size(customerList)}">
+            Customer:
+                  <select class="form-control form-control-sm" id="customer" th:field="*{customer}">
+                     <option th:each="customer : ${customerList}"
+                             th:text="${customer.getLastName()}"
+                             th:value="${customer.id}">
+
+                     </option>
+                 </select>
+                 </div>
+                 <br/>
+
+            <div th:switch="${#lists.size(carList)}">
+                 Car:
+                <select class="form-control form-control-sm" id="car" th:field="*{car}">
+                    <option th:each="car : ${carList}"
+                            th:text="${car.getModel()}"
+                            th:value="${car.id}">
+
+                    </option>
+                </select>
+            </div>
+                 <br/>
+                 Reservation Date:
+                 <input type="date" th:field="*{reservationDate}" />
+                 <br/><br>
+                 Return Date:
+                 <input type="date" th:field="*{returnDate}" />
+                 <br/><br>
+
+            <div th:switch="${#lists.size(stationList)}">
+                Return Service Station:
+                <select class="form-control form-control-sm" id="returnServiceStation" th:field="*{returnServiceStation}">
+                    <option th:each="returnServiceStation : ${stationList}"
+                            th:text="${returnServiceStation.getLocation()}"
+                            th:value="${returnServiceStation.id}">
+
+                    </option>
+                </select>
+            </div>
+                 <br/>
+
+            <div th:switch="${#lists.size(stationList)}">
+                Rental Service Station:
+                <select class="form-control form-control-sm" id="reservationServiceStation" th:field="*{reservationServiceStation}">
+                    <option th:each="reservationServiceStation : ${stationList}"
+                            th:text="${reservationServiceStation.getLocation()}"
+                            th:value="${reservationServiceStation.id}">
+
+                    </option>
+                </select>
+            </div>
+
+                 <br/><br><br>
+                 <input type="submit" value="Create" />
+             </form>
+
+             <br><br>
 
 
-      </main>
-      <!-- /.containerui -->
+             <a href="addReservation">Clear all</a>
+             <br><br>
+
+
+          </main>
+          <!-- /.containerui -->
 
 
 

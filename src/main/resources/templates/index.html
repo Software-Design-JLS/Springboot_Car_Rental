@@ -108,7 +108,7 @@
 
         </tr>
         <tr th:each ="reservation : ${reservations}">
-            <td th:utext="${reservation.customer.getFirstName()}">...</td>
+            <td th:utext="${reservation.customer.getLastName()}">...</td>
             <td th:utext="${reservation.car.getModel()}">...</td>
             <td th:utext="${reservation.reservationDate.toString()}">...</td>
             <td th:utext="${reservation.returnDate.toString()}">...</td>
@@ -116,8 +116,10 @@
             <td th:utext="${reservation.rentalServiceStation.getLocation()}">...</td>
            </tr>
        </table>
-    <br><br/><br><br/>
+    <br><br/>
 
+    <a href="returnCar">Return a Car</a>
+    <br><br/><br><br/>
 
    </main>
    <!-- /.container -->
