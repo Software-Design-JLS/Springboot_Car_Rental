@@ -44,7 +44,12 @@ public class ControllerTest {
     // in these tests we focus on the controller, so we don't test the repo and mock the needed behavior
     @MockBean
     private CustomerRepository repo;
-    
+    // in these tests we focus on the controller, so we don't test the repo and mock the needed behavior
+    @MockBean
+    private CarRepository repoCar;
+    // in these tests we focus on the controller, so we don't test the repo and mock the needed behavior
+    @MockBean
+    private ServiceStationRepository repoServiceStation;
     @Autowired
     MyController myController;
  
@@ -106,7 +111,6 @@ public class ControllerTest {
                 .andExpect(status().is3xxRedirection());
 
     }
-    /*
 
     // HTTP add reservation test
     @Test
@@ -114,25 +118,42 @@ public class ControllerTest {
             throws Exception {
 
         ReservationForm form = new ReservationForm();
-        //Customer customer = new Customer("Max", "Mustermann", "Puch Urstein", "23", "Male", "+40723571234", "max@muster.man");
-        //Car car = new Car("Benz", "SUVs", "Automatic", "Unlimited ", 5, "Economy", 66,"Available");
-        //ServiceStation serviceStation = new ServiceStation("Berlin");
+        //customer
+        Customer customer = new Customer("Max", "Mustermann", "Puch Urstein", "23", "Male", "+40723571234", "max@muster.man");
+        repo.save(customer);
+        List<Customer> allCustomers = Arrays.asList(customer);
+        // mock the repo: whenever findAll is called, we will get our predefined customer
+        given(repo.findAll()).willReturn(allCustomers);
 
-        CustomerService customerService = new CustomerService();
+        //car
+        Car car = new Car("VW", "Passenger Vans", "Manual", "Limited ", 4, "Mini", 80,"Not Available");
+        repoCar.save(car);
+        List<Car> allCars = Arrays.asList(car);
+        // mock the repo: whenever findAll is called, we will get our predefined customer
+        given(repoCar.findAll()).willReturn(allCars);
 
-        form.setCustomer(customerService.getById(2l));
-        form.setCar(car);
+
+        //service
+
+        ServiceStation service = new ServiceStation("Salzburg");
+        repoServiceStation.save(service);
+        List<ServiceStation> allStations = Arrays.asList(service);
+        // mock the repo: whenever findAll is called, we will get our predefined customer
+        given(repoServiceStation.findAll()).willReturn(allStations);
+
+        form.setCustomer(repo.findAll().iterator().next());
+        form.setCar(repoCar.findAll().iterator().next());
         form.setReservationDate(LocalDate.parse("2022-01-21"));
         form.setReturnDate(LocalDate.parse("2022-01-28"));
-        form.setReservationServiceStation(serviceStation);
-        form.setReturnServiceStation(serviceStation);
+        form.setReservationServiceStation(repoServiceStation.findAll().iterator().next());
+        form.setReturnServiceStation(repoServiceStation.findAll().iterator().next());
 
         mvc.perform(MockMvcRequestBuilders.post	("/addReservation",form)
                 .contentType(MediaType.TEXT_HTML))
                 .andExpect(status().is3xxRedirection());
 
     }
-    */
+
 
     
     
