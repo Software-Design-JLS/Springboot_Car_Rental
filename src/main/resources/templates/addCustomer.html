@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <title>Add Customer</title>
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
@@ -14,6 +14,44 @@
     <link rel="stylesheet" href="css/main.css">
 
     <meta name="theme-color" content="#fafafa">
+
+
+    <style>
+        body {
+            background: white;
+            text-align: center;
+            font-family: Calibri;
+            margin: auto;
+            background-image: url("https://wallpaperaccess.com/full/3918591.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 10px;
+            font-size: 23px;
+            font-weight: bold;
+
+        }
+
+        #title{
+            text-align: center;
+            font-size: 55px;
+            color: brown;
+            font-family: Calibri;
+            font-weight: bolder;
+        }
+
+        .form{
+
+            margin-left:auto;
+            margin-right:auto;
+            background: rgba(255,255,255, 0.6);
+            color: black;
+            width: 40%;
+        }
+
+    </style>
+
+
 
 </head>
 
@@ -25,7 +63,7 @@
 
 <main>
 
-    <h1>Spring Boot Web Thymeleaf Example Add</h1>
+    <h1 id="title">Car Rental</h1>
     <h2>
         <span th:text="'Service counter, ' + ${message}"></span>
         <br>
@@ -33,39 +71,36 @@
 
     </h2>
 
-
+    <div class="form"> <br></br>
     <form th:action="@{/addCustomer}"
           th:object="${customerForm}" method="POST">
         First Name:
         <input type="text" th:field="*{firstName}" />
-        <br/>
+        <br></br>
         Last Name:
         <input type="text" th:field="*{lastName}" />
-        <br/>
+        <br></br>
         eMail:
         <input type="text" th:field="*{eMail}" />
-        <br/>
+        <br></br>
         Tel:
         <input type="text" th:field="*{tel}" />
-        <br/>
+        <br></br>
         Age:
         <input type="text" th:field="*{age}" />
-        <br/>
+        <br></br>
         Gender:
         <input type="text" th:field="*{gender}" />
-        <br/>
+        <br></br>
         Address:
         <input type="text" th:field="*{address}" />
-        <br/>
+        <br></br>
         <input type="submit" value="Create" />
     </form>
-
-
-
-
-    <a href="addCustomer">Add Customer</a>
+    <br></br>
+    <button href="addCustomer">Clear All</button>
     <br/><br/>
-
+    </div>
 </main>
 <!-- /.container -->
 

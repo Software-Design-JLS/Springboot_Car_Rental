@@ -1,6 +1,7 @@
 package at.ac.fhsalzburg.swd.spring;
 
 import at.ac.fhsalzburg.swd.spring.dao.*;
+import at.ac.fhsalzburg.swd.spring.services.CarServiceInterface;
 import at.ac.fhsalzburg.swd.spring.services.CustomerService;
 import at.ac.fhsalzburg.swd.spring.services.CustomerServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,6 @@ public class ReservationForm {
     private LocalDate returnDate;
     private ServiceStation returnServiceStation;
     private ServiceStation reservationServiceStation;
-
     private Reservation reservation;
 
     public void setCustomer(Customer customer) {
@@ -61,6 +61,7 @@ public class ReservationForm {
     public Customer getCustomer(){
         return customer;
     }
+
 
     public Car getCar(){
         return car;

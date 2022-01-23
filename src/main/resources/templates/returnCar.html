@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Add Car</title>
+    <title>Return a Car</title>
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
@@ -14,6 +14,43 @@
     <link rel="stylesheet" href="css/main.css">
 
     <meta name="theme-color" content="#fafafa">
+
+    <style>
+        body {
+            background: white;
+            text-align: center;
+            font-family: Calibri;
+            margin: auto;
+            background-image: url("https://wallpaperaccess.com/full/3918591.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 10px;
+            font-size: 23px;
+            font-weight: bold;
+
+        }
+
+        #title{
+            text-align: center;
+            font-size: 55px;
+            color: brown;
+            font-family: Calibri;
+            font-weight: bolder;
+        }
+
+        .form{
+
+            margin-left:auto;
+            margin-right:auto;
+            background: rgba(255,255,255, 0.6);
+            color: black;
+            width: 40%;
+        }
+
+    </style>
+
+
 
 </head>
 
@@ -25,7 +62,7 @@
 
 <main>
 
-    <h1>Car Rental</h1>
+    <h1 id="title">Car Rental</h1>
     <h2>
         <span th:text="'Service counter, ' + ${message}"></span>
         <br>
@@ -34,7 +71,7 @@
     </h2>
 
 
-
+    <div class="form"> <br></br>
 
     <form th:action="@{/returnCar}"
           th:object="${returnForm}" method="POST">
@@ -63,7 +100,7 @@
         </div>
         <br>
         <div th:switch="${#lists.size(reservations)}">
-            Car:
+            Reservation ID:
             <select class="form-control form-control-sm" id="reservation" th:field="*{reservation}">
                 <option th:each="reservation : ${reservations}"
                         th:text="${reservation.getId()}"
@@ -81,7 +118,7 @@
 
 
     <a href="returnCar">Clear all</a>
-    <br><br>
+    </div>
 
     <br><br/>
 

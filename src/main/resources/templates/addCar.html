@@ -15,6 +15,45 @@
 
     <meta name="theme-color" content="#fafafa">
 
+    <style>
+        body {
+            background: white;
+            text-align: center;
+            font-family: Calibri;
+            margin: auto;
+            background-image: url("https://wallpaperaccess.com/full/3918591.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 10px;
+            font-size: 23px;
+            font-weight: bold;
+
+        }
+
+        #title{
+            text-align: center;
+            font-size: 55px;
+            color: brown;
+            font-family: Calibri;
+            font-weight: bolder;
+        }
+
+        .form {
+
+            margin-left:auto;
+            margin-right:auto;
+            background: rgba(255,255,255, 0.6);
+            color: black;
+            width: 40%;
+        }
+
+
+
+
+    </style>
+
+
 </head>
 
 <body>
@@ -25,7 +64,7 @@
 
 <main>
 
-    <h1>Car Rental</h1>
+    <h1 id="title">Car Rental</h1>
     <h2>
         <span th:text="'Service counter, ' + ${message}"></span>
         <br>
@@ -34,62 +73,38 @@
     </h2>
 
 
+    <div class="form"> <br></br>
     <form th:action="@{/addCar}"
           th:object="${carForm}" method="POST">
         Model:
         <input type="text" th:field="*{model}" />
-        <br/>
+        <br></br>
         Type:
         <input type="text" th:field="*{type}" />
-        <br/>
+        <br></br>
         Transmission:
         <input type="text" th:field="*{transmission}" />
-        <br/>
+        <br></br>
         Mileage:
         <input type="text" th:field="*{mileage}" />
-        <br/>
+        <br></br>
         Detail:
         <input type="text" th:field="*{detail}" />
-        <br/>
+        <br></br>
         Number of Passengers:
         <input type="text" th:field="*{numberOfPassengers}" />
-        <br/>
+        <br></br>
         Price:
         <input type="text" th:field="*{price}" />
-        <br/><br><br>
+        <br></br>
         <input type="submit" value="Create" />
     </form>
 
+    <br></br>
+    <button href="addCar">Clear all</button>
     <br><br>
 
-
-    <a href="addCar">Clear all</a>
-    <br><br>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Model</th>
-            <th>Type</th>
-            <th>Transmission</th>
-            <th>Mileage</th>
-            <th>Detail</th>
-            <th>Number of Passengers</th>
-            <th>Price</th>
-
-
-        </tr>
-        <tr th:each ="car : ${cars}">
-            <td th:utext="${car.id}">...</td>
-            <td th:utext="${car.model}">...</td>
-            <td th:utext="${car.type}">...</td>
-            <td th:utext="${car.transmission}">...</td>
-            <td th:utext="${car.mileage}">...</td>
-            <td th:utext="${car.detail}">...</td>
-            <td th:utext="${car.numberOfPassengers}">...</td>
-            <td th:utext="${car.price}">...</td>
-        </tr>
-    </table>
-
+    </div>
 
 </main>
 <!-- /.containerui -->

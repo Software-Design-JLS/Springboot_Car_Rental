@@ -43,11 +43,11 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
     @Transactional // this method runs within one database transaction; performing a commit at the end
     public void run(String...args) throws Exception {
 
-        customerService.addCustomer("Max", "Mustermann", "Puch Urstein", "23", "male", "+40723571234", "max@muster.man");
-        customerService.addCustomer("Ioana", "Lazea", "Salzburg", "21", "female", "+40726871238", "lazea@ioana.man");
-        customerService.addCustomer("Sandro", "Sulkni", "Wien", "21", "male", "+40723395634", "sandro@sulki.man");
-        customerService.addCustomer("Litharshi", "Siva", "Bremen", "24", "female", "+40793771232", "litharshi@siva.man");
-        customerService.addCustomer("Alex", "Meier", "Hamburg", "26", "male", "+40723293864", "alex@meier.man");
+        customerService.addCustomer("Max", "Mustermann", "Puch Urstein", "23", "Male", "+40723571234", "max@muster.man");
+        customerService.addCustomer("Ioana", "Lazea", "Salzburg", "21", "Female", "+40726871238", "lazea@ioana.man");
+        customerService.addCustomer("Sandro", "Sulkni", "Wien", "21", "Male", "+40723395634", "sandro@sulki.man");
+        customerService.addCustomer("Litharshi", "Siva", "Bremen", "24", "Female", "+40793771232", "litharshi@siva.man");
+        customerService.addCustomer("Alex", "Meier", "Hamburg", "26", "Male", "+40723293864", "alex@meier.man");
 
         Customer customer = customerService.getAll().iterator().next();
         customer = customerService.getById(1l);
