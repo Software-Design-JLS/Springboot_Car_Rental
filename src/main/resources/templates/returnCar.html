@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <title>Add Car</title>
 
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
@@ -26,47 +26,68 @@
 <main>
 
     <h1>Car Rental</h1>
-    <span th:text="${halloNachricht}"></span>
     <h2>
         <span th:text="'Service counter, ' + ${message}"></span>
         <br>
         <span th:text="'Session counter, ' + ${session.count.toString()}"></span>
 
     </h2>
-    <h2>
-        <span th:text="'Singleton Bean, ' + ${beanSingleton}"></span>
+
+
+
+
+    <form th:action="@{/returnCar}"
+          th:object="${returnForm}" method="POST">
+
+        <div th:switch="${#lists.size(customerList)}">
+            Customer:
+            <select class="form-control form-control-sm" id="customer" th:field="*{customer}">
+                <option th:each="customer : ${customerList}"
+                        th:text="${customer.getLastName()}"
+                        th:value="${customer.id}">
+
+                </option>
+            </select>
+        </div>
+        <br/>
+
+        <div th:switch="${#lists.size(carList)}">
+            Car:
+            <select class="form-control form-control-sm" id="car" th:field="*{car}">
+                <option th:each="car : ${carList}"
+                        th:text="${car.getModel()}"
+                        th:value="${car.id}">
+
+                </option>
+            </select>
+        </div>
         <br>
-        <span th:text="'Prototype Bean, ' + ${beanPrototype}"></span>
-        <br>
-        <span th:text="'Session Bean, ' + ${beanSession}"></span>
-    </h2>
+        <div th:switch="${#lists.size(reservations)}">
+            Car:
+            <select class="form-control form-control-sm" id="reservation" th:field="*{reservation}">
+                <option th:each="reservation : ${reservations}"
+                        th:text="${reservation.getId()}"
+                        th:value="${reservation.id}">
+
+                </option>
+            </select>
+        </div>
+
+        <br/><br><br>
+        <input type="submit" value="Return" />
+    </form>
+
+    <br><br>
 
 
+    <a href="returnCar">Clear all</a>
+    <br><br>
 
-<table border="1">
-    <tr>
-        <th>Customer</th>
-        <th>Car</th>
-        <th>Reservation Date</th>
-        <th>Return Date</th>
-        <th>Return Service Station</th>
-        <th>Reservation Service Station</th>
-
-    </tr>
-    <tr th:each ="reservation : ${reservations}">
-        <td th:utext="${reservation.customer.getLastName()}">...</td>
-        <td th:utext="${reservation.car.getModel()}">...</td>
-        <td th:utext="${reservation.reservationDate.toString()}">...</td>
-        <td th:utext="${reservation.returnDate.toString()}">...</td>
-        <td th:utext="${reservation.returnServiceStation.getLocation()}">...</td>
-        <td th:utext="${reservation.rentalServiceStation.getLocation()}">...</td>
-    </tr>
-</table>
-<br><br/><br><br/>
+    <br><br/>
 
 
 </main>
-<!-- /.container -->
+<!-- /.containerui -->
 
 
 
@@ -76,7 +97,7 @@
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 
-<!-- Google Analytics: change UA-XXXXX-Y to be your site's hID. -->
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
 <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')

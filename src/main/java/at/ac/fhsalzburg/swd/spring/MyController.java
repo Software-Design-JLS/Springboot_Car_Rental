@@ -230,7 +230,6 @@ public class MyController {
 		ServiceStation returnServiceStation = reservationForm.getReturnServiceStation();
 		ServiceStation reservationServiceStation = reservationForm.getReservationServiceStation();
 
-		//reservationService.addReservation(customer, car, reservationDate, returnDate, returnServiceStation, reservationServiceStation);
 		reservationService.addReservation(customerService.getById(customer.getId()), carService.getById(car.getId()), reservationDate, returnDate, serviceStationService.getById(returnServiceStation.getId()), serviceStationService.getById(reservationServiceStation.getId()));
 		return "redirect:/";
 	}
@@ -282,6 +281,43 @@ public class MyController {
 	}
 
 
+
+//Return
+
+	@RequestMapping(value = {"/returnCar"}, method = RequestMethod.POST)
+	public String returnCar(Model model, //
+								 @ModelAttribute("returnForm") ReturnForm returnForm) { // The @ModelAttribute is an annotation that binds a method parameter or method return value to a named model attribute and then exposes it to a web view: https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation
+
+
+		Customer customer = returnForm.getCustomer();
+		Car car = returnForm.getCar();
+		Reservation reservation = returnForm.getReservation();
+
+		reservationService.returnCar(reservationService.getById(reservation.getId()));
+
+		return "redirect:/";
+	}
+
+
+	@RequestMapping(value = {"/returnCar"}, method = RequestMethod.GET)
+	public String showReturnCarPage(Model model) {
+
+		ReturnForm returnForm = new ReturnForm();
+
+		model.addAttribute("stationList", serviceStationService.getAll());
+
+		model.addAttribute("carList",carService.getAll());
+
+		model.addAttribute("customerList", customerService.getAll());
+
+		model.addAttribute("returnForm", returnForm);
+
+		model.addAttribute("reservations", reservationService.getAll());
+
+		model.addAttribute("message", reservationService.doSomething());
+
+		return "returnCar";
+	}
 
 }
 

@@ -1,9 +1,6 @@
 package at.ac.fhsalzburg.swd.spring;
 
-import at.ac.fhsalzburg.swd.spring.dao.Car;
-import at.ac.fhsalzburg.swd.spring.dao.Customer;
-import at.ac.fhsalzburg.swd.spring.dao.CustomerRepository;
-import at.ac.fhsalzburg.swd.spring.dao.ServiceStation;
+import at.ac.fhsalzburg.swd.spring.dao.*;
 import at.ac.fhsalzburg.swd.spring.services.CustomerService;
 import at.ac.fhsalzburg.swd.spring.services.CustomerServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +24,18 @@ public class ReservationForm {
     private ServiceStation returnServiceStation;
     private ServiceStation reservationServiceStation;
 
+    private Reservation reservation;
+
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 
     public void setCar(Car car) {
