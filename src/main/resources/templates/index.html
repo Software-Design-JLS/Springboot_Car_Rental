@@ -99,22 +99,26 @@
     <br/><br/>
     <table border="1">
         <tr>
+            <th>Id</th>
             <th>Customer</th>
             <th>Car</th>
             <th>Reservation Date</th>
             <th>Return Date</th>
             <th>Return Service Station</th>
             <th>Reservation Service Station</th>
-
+            <th>Return this Car</th>
         </tr>
         <tr th:each ="reservation : ${reservations}">
+            <td th:utext="${reservation.customer.getId()}">...</td>
             <td th:utext="${reservation.customer.getLastName()}">...</td>
             <td th:utext="${reservation.car.getModel()}">...</td>
             <td th:utext="${reservation.reservationDate.toString()}">...</td>
             <td th:utext="${reservation.returnDate.toString()}">...</td>
             <td th:utext="${reservation.returnServiceStation.getLocation()}">...</td>
             <td th:utext="${reservation.rentalServiceStation.getLocation()}">...</td>
-           </tr>
+            <td><button><a>Return</a></button></td>
+
+        </tr>
        </table>
     <br><br/>
 

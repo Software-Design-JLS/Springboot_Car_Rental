@@ -69,6 +69,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
 
         reservationService.addReservation(customerService.getById(2l), carService.getById(8l), LocalDate.parse("2022-01-21"), LocalDate.parse("2022-02-21"), serviceStationService.getById(11l), serviceStationService.getById(10l));
         Reservation reservation = reservationService.getAll().iterator().next();
+        reservationService.returnCar(reservationService.getById(13l));
 
     }
 }

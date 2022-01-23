@@ -16,6 +16,7 @@ public interface ReservationServiceInterface {
 
     public abstract boolean addReservation(Reservation reservation);
 
+    public abstract boolean returnCar(Reservation reservationToFinish);
     public abstract Iterable<Reservation> getAll();
 
     // public abstract String editReservation();

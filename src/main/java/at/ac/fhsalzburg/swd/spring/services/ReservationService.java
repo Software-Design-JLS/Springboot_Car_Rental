@@ -30,7 +30,10 @@ public class ReservationService implements ReservationServiceInterface {
 
 
         Reservation newReservation = new Reservation(customer, car, reservationDate, returnDate, rentalServiceStation, returnServiceStation);
-
+        newReservation.setStatus(true);
+        newReservation.setPayed(false);
+        newReservation.setPrice(car.getPrice());
+        newReservation.setExtras("insurance");
         Car updatedCar = new Car(car.getModel(), car.getType(),car.getTransmission(),car.getMileage(),car.getNumberOfPassengers(),car.getDetail(),car.getPrice(),car.getStatus());
         updatedCar.setStatus("Not available");
         updatedCar.setId(car.getId());
@@ -55,7 +58,23 @@ public class ReservationService implements ReservationServiceInterface {
         return Integer.toString(i);
 
     }
+    @Override
+    public boolean returnCar(Reservation reservationToFinish) {
 
+        Reservation newReservation = new Reservation(reservationToFinish.getCustomer(), reservationToFinish.getCar(), reservationToFinish.getReservationDate(),reservationToFinish.getReturnDate(), reservationToFinish.getRentalServiceStation(), reservationToFinish.getReturnServiceStation());
+        newReservation.setStatus(false);
+        newReservation.setPayed(true);
+        newReservation.setPrice(reservationToFinish.getCar().getPrice());
+        newReservation.setExtras("insurance");
+        newReservation.setId(reservationToFinish.getId());
+        Car updatedCar = new Car(reservationToFinish.getCar().getModel(), reservationToFinish.getCar().getType(),reservationToFinish.getCar().getTransmission(),reservationToFinish.getCar().getMileage(),reservationToFinish.getCar().getNumberOfPassengers(),reservationToFinish.getCar().getDetail(),reservationToFinish.getCar().getPrice(),reservationToFinish.getCar().getStatus());
+        updatedCar.setStatus("Available");
+        updatedCar.setId(reservationToFinish.getCar().getId());
+
+        repo.save(newReservation);
+        carRepo.save(updatedCar);
+        return true;
+    }
 
         @Override
         public Iterable<Reservation> getAll () {
