@@ -74,7 +74,7 @@ public class ReservationService implements ReservationServiceInterface {
         updatedCar.setId(reservationToFinish.getCar().getId());
 
 
-        repo.save(newReservation);
+        repo.delete(newReservation);
         carRepo.save(updatedCar);
         return true;
     }
