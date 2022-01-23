@@ -21,35 +21,32 @@ import at.ac.fhsalzburg.swd.spring.dao.CustomerRepository;
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @ActiveProfiles("test")
-public class CustomerRepositoryTest {
- 
+public class CarRepositoryTest {
+
     @Autowired
     private TestEntityManager entityManager;
- 
-    @Autowired
-    private CustomerRepository customerRepository;
 
     @Autowired
     private CarRepository carRepository;
-    
+
     @Test
     public void whenFindByName_thenReturnEmployee() {
         // given
-        Customer customer = new Customer("Ioana", "Lazea", "Salzburg", "21", "Female", "+40726871238", "lazea@ioana.man");
-        entityManager.persist(customer);
+        Car car = new Car("Benz", "SUVs", "Automatic", "Unlimited ", 5, "Economy", 66,"Available");
+        entityManager.persist(car);
         entityManager.flush();
-        List<Customer> given = new ArrayList<Customer>();
-        given.add(customer);
-     
+        List<Car> given = new ArrayList<Car>();
+        given.add(car);
+
         // when
-        List<Customer> found = customerRepository.findByLastName(customer.getLastName());
-     
+        List<Car> found = carRepository.findByModel(car.getModel());
+
         // then
         assertIterableEquals(given, found);
-        
+
     }
 
 
 
- 
+
 }
