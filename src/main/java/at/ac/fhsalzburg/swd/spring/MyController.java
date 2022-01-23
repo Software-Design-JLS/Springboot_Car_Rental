@@ -230,8 +230,10 @@ public class MyController {
 		ServiceStation returnServiceStation = reservationForm.getReturnServiceStation();
 		ServiceStation reservationServiceStation = reservationForm.getReservationServiceStation();
 
-		reservationService.addReservation(customerService.getById(customer.getId()), carService.getById(car.getId()), reservationDate, returnDate, serviceStationService.getById(returnServiceStation.getId()), serviceStationService.getById(reservationServiceStation.getId()));
+		if (reservationService.addReservation(customerService.getById(customer.getId()), carService.getById(car.getId()), reservationDate, returnDate, serviceStationService.getById(returnServiceStation.getId()), serviceStationService.getById(reservationServiceStation.getId())) == true)
 		return "redirect:/";
+		else
+			return "addReservation";
 	}
 
 

@@ -29,7 +29,7 @@ public class ReservationService implements ReservationServiceInterface {
     @Override
     public boolean addReservation(Customer customer, Car car, LocalDate reservationDate, LocalDate returnDate, ServiceStation rentalServiceStation, ServiceStation returnServiceStation) {
 
-
+        if (car.getStatus() == "Available"){
         Reservation newReservation = new Reservation(customer, car, reservationDate, returnDate, rentalServiceStation, returnServiceStation);
         newReservation.setStatus(true);
         newReservation.setPayed(false);
@@ -43,6 +43,8 @@ public class ReservationService implements ReservationServiceInterface {
         repo.save(newReservation);
         carRepo.save(updatedCar);
         return true;
+        }
+        else return false;
     }
 
     @Override
