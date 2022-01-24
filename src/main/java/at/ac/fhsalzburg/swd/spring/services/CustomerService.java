@@ -65,11 +65,6 @@ public class CustomerService implements CustomerServiceInterface {
 		return false;
 	}
 
-	/*
-	@Override
-	public List<Customer> getCustomerList() {
-		return (List<Customer>) repo.findAll();
-	}*/
 
 	@Override
 	public Iterable<Customer> getAll() {

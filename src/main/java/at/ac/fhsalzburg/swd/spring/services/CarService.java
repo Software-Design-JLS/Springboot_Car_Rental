@@ -34,6 +34,7 @@ public class CarService implements CarServiceInterface {
 
 
         Car newCar = new Car(model, type, transmission, mileage, numberOfPassengers, detail, price,status);
+        newCar.setStatus("Available");
         repo.save(newCar);
         return true;
     }
@@ -41,6 +42,7 @@ public class CarService implements CarServiceInterface {
     @Override
     public boolean addCar(Car car) {
 
+        car.setStatus("Available");
         repo.save(car);
 
         return false;
